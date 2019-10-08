@@ -1,38 +1,24 @@
-extends Area2D
+extends 'res://character/Character.gd'
 
-export (int) var speed
+signal moved
+signal dead
+signal grabbed_key
+signal win
 
-var tile_size = 64
+func _process(delta):
+	if can_move:
+		for dir in moves.keys():
+			if Input.is_action_pressed(dir):
+				if move(dir):
+					emit_signal('moved')
+		
+func _on_Player_area_entered(area):
+	if area.is_in_group('enemies'):
+		emit_signal('dead')
+	if area.has_method('pickup'):
+		area.pickup()
+	if area.type == 'key_red':
+		emit_signal('grabbed_key')
+	if area.type == 'star':
+		emit_signal('win')
 
-var can_move = true
-
-var facing = 'right'
-
-var moves = {
-	'right':Vector2(1,0),
-	'left':Vector2(-1,0),
-	'down':Vector2(0,1),
-	'up':Vector2(0,-1)
-}
-
-onready var raycasts = {
-	'right':$RayCastRight,
-	'left':$RayCastLeft,
-	'uo':$RayCastUp,
-	'down':$RayCastDown
-	}
-	
-func move(dir):
-	$AnimationPlayer.playback_speed = speed
-	facing = dir
-	if raycasts[facing].is_colliding():
-		return
-	can_move = false
-	$AnimationPlayer.play(facing)
-	$MoveTween.interpolate_property(self, "position",
-	position, position + moves[facing] * tile_size,
-	1.0/speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	
-
-func _on_MoveTween_tween_completed(object, key):
-	can_move = true
