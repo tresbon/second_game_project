@@ -38,8 +38,8 @@ func _ready():
     randomize()
     $Items.hide()
     set_camera_limits()
-    var door_id = $Walls.tile_set.find_tile_by_name('door_red')
-    for cell in $Walls.get_used_cells_by_id(door_id):
+    var red_door_id = $Walls.tile_set.find_tile_by_name('door_red')
+    for cell in $Walls.get_used_cells_by_id(red_door_id):
         doors.append(cell)
     spawn_items()
     $Player.connect('dead', self, 'game_over')

@@ -3,6 +3,7 @@ extends Area2D
 var textures = {
 	'coin':'res://assets/coin.png',
 	'key_red':'res://assets/keyRed.png',
+	'key_green':'res://assets/keyGreen.png',
 	'star':'res://assets/star.png'
 	}
 
@@ -16,7 +17,7 @@ func _ready():
 	Color(1,1,1,1), Color(1,1,1,0), 0.5,
 	Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	
-func init():
+func init(_type, pos):
 	$Sprite.texture = load(textures[_type])
 	type = _type
 	position = pos
