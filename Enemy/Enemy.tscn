@@ -4,7 +4,7 @@
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Enemy/slime.png" type="Texture" id=3]
 
-[node name="Enemy" index="0" groups=[
+[node name="Enemy" groups=[
 "enemies",
 "enemy",
 ] instance=ExtResource( 1 )]

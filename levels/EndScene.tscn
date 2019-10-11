@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/Unique.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Enemy/slime.png" type="Texture" id=2]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "run"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14 ]
+}
+
+[node name="StartScreen" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource( 2 )
+margin_right = 1017.0
+margin_bottom = 600.0
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 267.911
+margin_top = 125.477
+margin_right = 709.911
+margin_bottom = 159.477
+custom_fonts/font = SubResource( 1 )
+text = "Escape the maze!"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/run = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 25.982, 283.203 )
+texture = ExtResource( 2 )
+vframes = 4
+hframes = 5
+frame = 14
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
