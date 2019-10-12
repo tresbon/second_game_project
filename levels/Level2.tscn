@@ -1,19 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://levels/Level1.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://pickup/Pickup.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/tileset.tres" type="TileSet" id=4]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://screens/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/tileset.tres" type="TileSet" id=5]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 1 )
 Enemy = ExtResource( 2 )
 Pickup = ExtResource( 3 )
 
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
 [node name="Ground" type="TileMap" parent="."]
 visible = false
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 5 )
 collision_layer = 0
 collision_mask = 6
 format = 1
@@ -24,7 +27,7 @@ __meta__ = {
 
 [node name="Walls" type="TileMap" parent="."]
 visible = false
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 5 )
 collision_mask = 6
 format = 1
 tile_data = PoolIntArray( 0, 6, 0, 1, 8, 0, 2, 6, 0, 3, 8, 0, 4, 6, 0, 5, 5, 0, 6, 8, 0, 7, 6, 0, 8, 6, 0, 9, 5, 0, 10, 7, 0, 11, 7, 0, 12, 8, 0, 13, 7, 0, 14, 7, 0, 15, 7, 0, 65536, -1073741819, 0, 65546, 536870912, 0, 65551, -1610612730, 0, 131072, -1073741819, 0, 131074, 1, 0, 131079, 1, 0, 131087, -1610612729, 0, 196608, -1073741816, 0, 196610, 1, 0, 196611, 1, 0, 196613, 1, 0, 196623, -1610612729, 0, 262144, -1073741818, 0, 262149, 1, 0, 262153, 1, 0, 262156, 536870912, 0, 262157, 0, 0, 262158, 536870912, 0, 262159, -1610612731, 0, 327680, -1073741819, 0, 327681, 19, 0, 327682, 4, 0, 327683, 0, 0, 327685, 536870912, 0, 327689, 1, 0, 327695, -1610612729, 0, 393216, -1073741819, 0, 393219, 4, 0, 393220, 3, 0, 393221, 4, 0, 393222, 1, 0, 393223, 16, 0, 393224, 1, 0, 393225, 3, 0, 393226, 1, 0, 393229, 1, 0, 393231, -1610612728, 0, 458752, -1073741818, 0, 458757, 4, 0, 458762, 1, 0, 458767, -1610612730, 0, 524288, -1073741819, 0, 524293, 3, 0, 524298, 1, 0, 524300, 4, 0, 524303, -1610612728, 0, 589824, 1610612744, 0, 589825, 1610612743, 0, 589826, 1610612743, 0, 589827, 1610612743, 0, 589828, 1610612743, 0, 589829, 1610612742, 0, 589830, 1610612743, 0, 589831, 1610612741, 0, 589832, 1610612744, 0, 589833, 1610612744, 0, 589834, 1610612744, 0, 589835, 1610612744, 0, 589836, 1610612741, 0, 589837, 1610612744, 0, 589838, 1610612742, 0, 589839, -1610612728, 0 )
@@ -34,7 +37,7 @@ __meta__ = {
 
 [node name="Items" type="TileMap" parent="."]
 visible = false
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 5 )
 collision_layer = 8
 collision_mask = 6
 format = 1
@@ -43,4 +46,4 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
+[node name="Player" parent="." instance=ExtResource( 6 )]
